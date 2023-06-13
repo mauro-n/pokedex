@@ -1,0 +1,83 @@
+:root {
+    --normal: #A8A77A;
+	--fire: #EE8130;
+	--water: #6390F0;
+	--electric: #F7D02C;
+	--grass: #7AC74C;
+	--ice: #96D9D6;
+	--fighting: #C22E28;
+	--poison: #A33EA1;
+	--ground: #E2BF65;
+	--flying: #A98FF3;
+	--psychic: #F95587;
+	--bug: #A6B91A;
+	--rock: #B6A136;
+	--ghost: #735797;
+	--dragon: #6F35FC;
+	--dark: #705746;
+	--steel: #B7B7CE;
+	--fairy: #D685AD;
+}
+
+.bg-pokenormal{
+    background-color: var(--normal) !important;
+}
+.bg-pokefire{
+    background-color: var(--fire) !important;
+}
+.bg-pokewater{
+    background-color: var(--water) !important;
+}
+.bg-pokeelectric{
+    background-color: var(--electric) !important;
+}
+.bg-pokegrass{
+    background-color: var(--grass) !important;
+}
+.bg-pokeice{
+    background-color: var(--ice) !important;
+}
+.bg-pokefighting{
+    background-color: var(--fighting) !important;
+}
+.bg-pokepoison{
+    background-color: var(--poison) !important;
+}
+.bg-pokeground{
+    background-color: var(--ground) !important;
+}
+.bg-pokeflying{
+    background-color: var(--flying) !important;
+}
+.bg-pokepsychic{
+    background-color: var(--psychic) !important;
+}
+.bg-pokebug{
+    background-color: var(--bug) !important;
+}
+.bg-pokerock{
+    background-color: var(--rock) !important;
+}
+.bg-pokeghost{
+    background-color: var(--ghost) !important;
+}
+.bg-pokedragon{
+    background-color: var(--dragon) !important;
+}
+.bg-pokedark{
+    background-color: var(--dark) !important;
+}
+.bg-pokesteel{
+    background-color: var(--steel) !important;
+}
+.bg-pokefairy{
+    background-color: var(--fairy) !important;
+}
+
+main {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;    
+}
+

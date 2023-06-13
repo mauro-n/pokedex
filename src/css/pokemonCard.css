@@ -1,0 +1,50 @@
+.card-img {
+    width: 50%;
+    max-width: 200px;
+    height: auto;
+    max-height: 200px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-text {
+    width: 50%;
+}
+
+.card {
+    padding: 10px;
+}
+
+.pokemon-card {
+    margin: 10px 10px;
+    min-width: 23%;
+    min-height: 200px;
+    filter: contrast(1);
+}
+
+.pokemon-order {
+    text-align: center;
+    padding: 5px;
+    width: 3em;
+    height: 1.9em;
+    line-height: 1.1em;
+    background-color: beige;
+    border-radius: 100%;
+}
+
+.card-title {
+    text-transform: capitalize;
+}
+
+.typeList {
+    width: 80px;
+}
+
+.typeItem {
+    margin: 5px;
+    border-radius: 12px;
+    padding: 5px;
+    filter: brightness(1.1);
+    text-align: center;
+}

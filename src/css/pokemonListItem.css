@@ -1,0 +1,31 @@
+.pokemonList-item {
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    margin: 10px 0px;
+}
+
+.pokemonList-item:hover {
+    cursor: pointer;
+}
+
+.pokemonList-item-pokeball {
+    width: 20px;
+    margin: 0px 10px;
+}
+
+.pokemonList-item-name {
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+.pokemonList-item-type {
+    display: inline-block;
+    text-align: center;
+    width: 70px;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px 2px;
+    text-transform: uppercase;
+}
