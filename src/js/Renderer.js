@@ -1,6 +1,16 @@
-const Renderer = {};
+import Coordinates from "./Coordinates.js";
+import PokeApi from "./PokeApi.js";
 
-Renderer.renderPokemonList = (Pokemon) => {
+/**
+ * This component is responsible for rendering elements in screen.
+ */
+const Renderer = {};
+/**
+ * Creates a pokemon list item
+ * @param {*} Pokemon A pokemon DTO containing information about the pokemon
+ * @returns 
+ */
+Renderer.renderPokemonListItem = (Pokemon) => {
     return `
     <div id="pokemon-${Pokemon.number}" class = "pokemonList-item">
         <div class = "pokemonList-item-number">${Pokemon.number}</div>
@@ -12,7 +22,11 @@ Renderer.renderPokemonList = (Pokemon) => {
     </div>    
     `;
 }
-
+/**
+ * Creates a pokemon details card
+ * @param {*} pokemon a pokemon DTO containing information about the pokemon
+ * @returns 
+ */
 Renderer.renderPokemonDetail = (pokemon) => {
 
     const renderStats = (stats) => {
@@ -31,7 +45,7 @@ Renderer.renderPokemonDetail = (pokemon) => {
             `;
         }).join("")
     }
-    
+
     return `
     <div class="pokemon-detail-container ">
         <div class = "pokemon-detail-title-container">
@@ -65,11 +79,12 @@ Renderer.renderPokemonDetail = (pokemon) => {
     </div>    
     `;
 }
-
-Renderer.loadPokemon = (pokemon) => {
+/**
+ * Renders a single pokemon.
+ */
+Renderer.loadPokemon = () => {
     Renderer.toggleLoading();
     const parentList = document.getElementById("pokemon-list");
-    
     const details = PokeApi.getPokemon(Coordinates.currentPokemon)
         .then(detail => {
             const pokemonDetail = Renderer.renderPokemonDetail(detail);
@@ -77,35 +92,33 @@ Renderer.loadPokemon = (pokemon) => {
             Renderer.toggleLoading();
             const listView = document.getElementById("list-view");
             listView.addEventListener("click", () => {
-                return Coordinates.switchListView();
+                return Renderer.toggleListView();
             })
         })
 
 }
-
+/**
+ * Renders a batch of pokemons
+ * @param {*} Coordinates Coordinates obj for offset, limit, total
+ */
 Renderer.loadPokemons = (Coordinates) => {
     Renderer.toggleLoading();
+    const parentList = document.getElementById("pokemon-list");
     const { limit, offset, total } = Coordinates;
-    
-    if (limit + offset > total) {
-        limit = total - offset;
-        loadNextBtn.disabled = true;
-        return;
-    }
 
     PokeApi.getPokemons(offset, limit)
         .then((pokemonList = []) => {
-            
-            const pokemonListHtml = pokemonList.map(Renderer.renderPokemonList)
+
+            const pokemonListHtml = pokemonList.map(Renderer.renderPokemonListItem)
             const pokemonHtml = pokemonListHtml.join("");
-            pokemonListSrc.innerHTML = pokemonHtml;
+            parentList.innerHTML = pokemonHtml;
             Renderer.toggleLoading();
 
             const children = document.getElementById("pokemon-list").children;
             const childrenList = Array.from(children);
 
             childrenList.forEach(element => {
-                element.addEventListener("click", () => {                    
+                element.addEventListener("click", () => {
                     Coordinates.listView = false;
                     Coordinates.currentPokemon = element.children[0].innerText;
                     Coordinates.offset = Coordinates.currentPokemon;
@@ -115,7 +128,9 @@ Renderer.loadPokemons = (Coordinates) => {
         })
         .catch(err => console.log(err));
 }
-
+/**
+ * Toggles loading element in the screen
+ */
 Renderer.toggleLoading = () => {
     const spinner = document.getElementById("loading-icon");
     if (spinner.style.display == "block") {
@@ -124,3 +139,13 @@ Renderer.toggleLoading = () => {
         spinner.style.display = "block"
     }
 }
+/**
+ * Renders the list view
+ */
+Renderer.toggleListView = () => {
+    Coordinates.listView = true;
+    Coordinates.offset = parseInt(Coordinates.offset / Coordinates.limit) * Coordinates.limit;
+    Renderer.loadPokemons(Coordinates)
+}
+
+export default Renderer;

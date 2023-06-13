@@ -1,4 +1,7 @@
-class PokemonDetailDTO {
+/**
+ * Is responsible for holding the details of a pokemon.
+ */
+export default class PokemonDetailDTO {
     number = 0;
     name = "";
     types = [];
