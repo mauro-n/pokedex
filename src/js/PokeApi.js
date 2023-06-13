@@ -35,9 +35,13 @@ PokeApi.getPokemon = async (id) => {
     const pokemon = await request.json();
     const abilityResponse = await fetch(pokemon.abilities[0].ability.url);
     const ability = await abilityResponse.json();
+    let enAbility = null;
+    ability.effect_entries.forEach(element => {
+        if (element.language.name == "en") enAbility = element; 
+    });
     const abilityObj = {
         name: ability.name,
-        entry: ability.effect_entries[0].short_effect
+        entry: enAbility.short_effect
     }
     return new PokemonDetailDTO({...pokemon, ability: abilityObj});
 }
