@@ -29,6 +29,3 @@ loadPreviousBtn.addEventListener("click", () => {
 })
 
 Renderer.loadPokemons(Coordinates);
-
-
-
