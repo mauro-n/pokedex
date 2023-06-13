@@ -1,6 +1,6 @@
 const Coordinates = {
     offset: 0,
-    limit: 3,
+    limit: 10,
     total: 151,
     currentPokemon: null,
     listView: true,

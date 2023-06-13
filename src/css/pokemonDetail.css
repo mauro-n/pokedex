@@ -1,6 +1,5 @@
 .pokemon-detail-container {
     width: 100%;
-    margin: 5% 0;
 }
 .pokemon-detail-title-container{
     border-top: 6px solid #5B697D;
@@ -95,7 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1px 8px;
+    margin: 0px 8px;
     min-height: 30px;
 }
 
@@ -109,14 +108,15 @@
 }
 
 .pokemon-detail-statcontainer>span {
-    min-height: 25px;
-    line-height: 22px;
+    min-height: 10px;
+    line-height: 18px;
     font-size: 1.2em;
     border-radius: 6px;
     text-transform: uppercase;
 }
 
 .pokemon-detail-statcontainer--ability>span {
+
     line-height: 22px;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -146,8 +146,7 @@
 }
 
 .type-badge {
-    text-align: center;
-    
+    text-align: center;    
     color: white;
     min-width: calc(100%/3);
     border-style: outset;
@@ -157,8 +156,8 @@
     display: block;
 }
 .pokemon-detail-statvalue--ability-entry {
-    min-height: 40px;
-    padding: 10px;
+    min-height: 25px;
+    padding: 0px;
 }
 
 @media(width < 576px) {
