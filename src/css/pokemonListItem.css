@@ -3,10 +3,13 @@
     justify-content: space-between;
     text-align: start;
     margin: 10px 0px;
+    border-radius: 10px;
 }
 
 .pokemonList-item:hover {
     cursor: pointer;
+    filter: brightness(1.2);
+    background-color: rgba(255, 255, 255, 0.468);
 }
 
 .pokemonList-item-pokeball {
@@ -22,7 +25,7 @@
 .pokemonList-item-type {
     display: inline-block;
     text-align: center;
-    width: 70px;
+    min-width: 70px;
     color: white;
     padding: 5px;
     border-radius: 5px;

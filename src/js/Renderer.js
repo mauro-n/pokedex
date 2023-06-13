@@ -13,25 +13,6 @@ Renderer.renderPokemonList = (Pokemon) => {
     `;
 }
 
-Renderer.renderPokemonCard = (pokemon) => {
-    return `
-        <div class="card bg-poke${pokemon.type} pokemon-card">
-            <img src=${pokemon.img}
-            class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <div class="d-flex justify-content-between">
-                    <h5 class="card-title">${pokemon.name}</h5>    
-                    <div class="pokemon-order">#${pokemon.number}</div>
-                </div>
-                <div class="typeList">
-                    ${pokemon.types.map(el => `<div class="typeItem bg-poke${el}">${el}</div>`).join("")}
-                </div>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        `
-}
-
 Renderer.renderPokemonDetail = (pokemon) => {
 
     const renderStats = (stats) => {
@@ -60,7 +41,7 @@ Renderer.renderPokemonDetail = (pokemon) => {
         <div class = "pokemon-detail-content
         d-flex flex-column flex-sm-row text-center text-sm-start">
             <div class = "pokemon-detail-photo">
-                <div class="pokemon-detail-name">Lv1 ${pokemon.name.toUpperCase()}</div>
+                <div class="pokemon-detail-name">${pokemon.name.toUpperCase()}</div>
                 <div class = "pokemon-detail-img-container">
                     <img class = "pokemon-detail-img" src = ${pokemon.img}>
                 </div>
@@ -86,12 +67,14 @@ Renderer.renderPokemonDetail = (pokemon) => {
 }
 
 Renderer.loadPokemon = (pokemon) => {
+    Renderer.toggleLoading();
     const parentList = document.getElementById("pokemon-list");
     
     const details = PokeApi.getPokemon(Coordinates.currentPokemon)
         .then(detail => {
             const pokemonDetail = Renderer.renderPokemonDetail(detail);
             parentList.innerHTML = pokemonDetail;
+            Renderer.toggleLoading();
             const listView = document.getElementById("list-view");
             listView.addEventListener("click", () => {
                 return Coordinates.switchListView();
@@ -101,6 +84,7 @@ Renderer.loadPokemon = (pokemon) => {
 }
 
 Renderer.loadPokemons = (Coordinates) => {
+    Renderer.toggleLoading();
     const { limit, offset, total } = Coordinates;
     
     if (limit + offset > total) {
@@ -115,6 +99,7 @@ Renderer.loadPokemons = (Coordinates) => {
             const pokemonListHtml = pokemonList.map(Renderer.renderPokemonList)
             const pokemonHtml = pokemonListHtml.join("");
             pokemonListSrc.innerHTML = pokemonHtml;
+            Renderer.toggleLoading();
 
             const children = document.getElementById("pokemon-list").children;
             const childrenList = Array.from(children);
@@ -129,4 +114,13 @@ Renderer.loadPokemons = (Coordinates) => {
             });
         })
         .catch(err => console.log(err));
+}
+
+Renderer.toggleLoading = () => {
+    const spinner = document.getElementById("loading-icon");
+    if (spinner.style.display == "block") {
+        spinner.style.display = "none"
+    } else {
+        spinner.style.display = "block"
+    }
 }

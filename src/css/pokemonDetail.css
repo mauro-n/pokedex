@@ -1,7 +1,9 @@
 .pokemon-detail-container {
     width: 100%;
 }
+
 .pokemon-detail-title-container{
+    font-family: "pokemon", sans-serif;
     border-top: 6px solid #5B697D;
     border-right: 6px solid #5B697D;
     border-left: 6px solid #5B697D;
@@ -14,14 +16,14 @@
 .goback-btn {
     text-align: center;
     width: 20%;
-    border-start-start-radius: 10px;
-    border-end-start-radius: 10px;
+    border-radius: 10px;
     border-style: outset;
     color: white;
     background-color: #DFD898;
-    font-size: min(calc(1em + 1vw), (1.2em));
+    font-size: min(calc(0.5em + 1vw), (0.9em));
     text-shadow: 1px 3px 5px rgba(0, 0, 0, 0.83);
-    padding: 0px 15px;
+    padding: 0px 0px 5px 4px;
+    margin-right: 10px;
 }
 
 .goback-btn:hover {
@@ -37,11 +39,12 @@
 
 .pokemon-detail-title {
     margin: 0;
+    padding: 0px 15px 5px 15px;
     text-shadow: 1px 3px 5px rgba(0, 0, 0, 0.83);
-    font-size: min(calc(1em + 1vw), (1.3em));
+    font-size: min(calc(0.5em + 1vw), (0.9em));
     text-align: center;
     color: white;
-    width: 48%;
+    width: 50%;
     background-color: #DFD898;
     border-start-end-radius: 10px;
     border-end-end-radius: 10px;
@@ -116,7 +119,6 @@
 }
 
 .pokemon-detail-statcontainer--ability>span {
-
     line-height: 22px;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -157,7 +159,8 @@
 }
 .pokemon-detail-statvalue--ability-entry {
     min-height: 25px;
-    padding: 0px;
+    padding: 0px 10px;
+    background-color: #fdefde;
 }
 
 @media(width < 576px) {
